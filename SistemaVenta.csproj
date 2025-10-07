@@ -415,6 +415,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BD\dbTecnovera.sql" />
+    <Content Include="BD\db_tecnovera.sql" />
+    <Content Include="BD\registro_de_distritos.sql" />
+    <Content Include="BD\vistas.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
