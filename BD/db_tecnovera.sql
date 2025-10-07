@@ -46,6 +46,10 @@ INSERT INTO `CARGO` (`NombreCargo`, `EstadoCargo`) VALUES
 ('Administrador', 1),
 ('Gerente General', 1);
 
+INSERT INTO USUARIO (Codigo, Password, IdCargo, EstadoUsuario) VALUES
+('admin001', '123456', 11, 1),
+('gerente001', '654321', 12, 1)
+
 
 INSERT INTO `TIPO_PAGO` (`IdTipoPago`, `TipoPago`) VALUES
 (1, 'Efectivo'),
