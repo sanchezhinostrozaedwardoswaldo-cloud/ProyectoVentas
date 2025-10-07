@@ -33,7 +33,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxCargo = new System.Windows.Forms.ComboBox();
             this.txtcodigo = new System.Windows.Forms.TextBox();
             this.txtcontraseña = new System.Windows.Forms.TextBox();
             this.btningresar = new System.Windows.Forms.Button();
@@ -97,14 +97,14 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Acceso al Sistema...!";
             // 
-            // comboBox1
+            // comboBoxCargo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(401, 148);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(355, 21);
-            this.comboBox1.TabIndex = 3;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBoxCargo.FormattingEnabled = true;
+            this.comboBoxCargo.Location = new System.Drawing.Point(401, 148);
+            this.comboBoxCargo.Name = "comboBoxCargo";
+            this.comboBoxCargo.Size = new System.Drawing.Size(355, 21);
+            this.comboBoxCargo.TabIndex = 3;
+            this.comboBoxCargo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // txtcodigo
             // 
@@ -204,7 +204,7 @@
             this.Controls.Add(this.btningresar);
             this.Controls.Add(this.txtcontraseña);
             this.Controls.Add(this.txtcodigo);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxCargo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -227,7 +227,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxCargo;
         private System.Windows.Forms.TextBox txtcodigo;
         private System.Windows.Forms.TextBox txtcontraseña;
         private System.Windows.Forms.Button btningresar;

@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace SistemaVenta
 {
     public partial class Login_seguridad : Form
     {
+        conexion_bd conexionBD = new conexion_bd();
         public Login_seguridad()
         {
             InitializeComponent();
@@ -46,49 +48,31 @@ namespace SistemaVenta
 
         private void btningresar_Click(object sender, EventArgs e)
         {
-            String usuario = "Admin";
-            String password = "123456";
-            String rolAdmin = "Administrador";
-            String rolEmpleado = "Empleado";
+            string codigo = txtcodigo.Text.Trim();
+            string password = txtcontraseña.Text.Trim();
+            int idCargo = (int)comboBoxCargo.SelectedValue;
 
-            String User = txtcodigo.Text;
-            String pass = txtcontraseña.Text;
-            String rolSeleccionado = comboBox1.SelectedItem?.ToString();
-
-            if (string.IsNullOrEmpty(rolSeleccionado))
+            if (ValidarUsuario(codigo, password, idCargo))
             {
-                MessageBox.Show("Por favor, seleccione un cargo.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (User.Equals(usuario) && pass.Equals(password) && rolSeleccionado.Equals(rolAdmin))
-            {
-                MessageBox.Show("Datos correctos", "Bienvenido¡", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Menu_general a = new Menu_general();
-                a.Show();
-                this.Hide();
-            }
-            else if (User.Equals(usuario) && pass.Equals(password) && rolSeleccionado.Equals(rolEmpleado))
-            {
-                MessageBox.Show("Datos correctos", "Bienvenido¡", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Acceso concedido.");
                 Menu_general a = new Menu_general();
                 a.Show();
                 this.Hide();
             }
             else
             {
-                MessageBox.Show("Usuario, contraseña o rol de Administrador incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuario, contraseña o cargo incorrectos.");
             }
         }
 
         private void Login_seguridad_Load(object sender, EventArgs e)
         {
-            comboBox1.Items.Add("<<Seleccionar Cargo>>");
-            comboBox1.Items.Add("Administrador");
-            comboBox1.Items.Add("Empleado");
-            comboBox1.Items.Add("Supervisor");
-            
-            comboBox1.SelectedIndex = 0;
+            conexionBD.LlenarComboBox(
+            comboBoxCargo,
+            "SELECT IdCargo, NombreCargo FROM CARGO",
+            "NombreCargo",
+            "IdCargo"
+            );
         }
 
         private void txtcontraseña_TextChanged(object sender, EventArgs e)
@@ -103,5 +87,46 @@ namespace SistemaVenta
         {
 
         }
+
+        private bool ValidarUsuario(string codigo, string password, int idCargo)
+        {
+                bool usuarioValido = false;
+                string consulta = @"
+            SELECT U.IdUsuario 
+            FROM USUARIO U
+            WHERE U.Codigo = @codigo 
+              AND U.Password = @password
+              AND U.IdCargo = @idCargo
+              AND U.EstadoUsuario = 1;
+                ";
+
+            try
+            {
+                using (MySqlConnection conexion = conexionBD.AbrirConexion())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(consulta, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@codigo", codigo);
+                        cmd.Parameters.AddWithValue("@password", password);
+                        cmd.Parameters.AddWithValue("@idCargo", idCargo);
+
+                        var resultado = cmd.ExecuteScalar();
+
+                        if (resultado != null)
+                        {
+                            usuarioValido = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al validar usuario: " + ex.Message);
+            }
+
+            return usuarioValido;
+        }
+
+
     }
 }
