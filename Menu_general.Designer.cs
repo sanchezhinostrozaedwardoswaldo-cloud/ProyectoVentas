@@ -875,6 +875,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox2.Image = global::SistemaVenta.Properties.Resources.on_off_button;
             this.pictureBox2.Location = new System.Drawing.Point(88, 584);
             this.pictureBox2.Name = "pictureBox2";
