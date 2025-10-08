@@ -52,11 +52,20 @@ namespace SistemaVenta
             string password = txtcontraseña.Text.Trim();
             int idCargo = (int)comboBoxCargo.SelectedValue;
 
+            // Validar que se haya seleccionado un cargo válido
+            if (idCargo == 0)
+            {
+                MessageBox.Show("Por favor, seleccione un cargo válido.");
+                return;
+            }
+
             if (ValidarUsuario(codigo, password, idCargo))
             {
-                MessageBox.Show("Acceso concedido.");
-                Menu_general a = new Menu_general();
-                a.Show();
+                MessageBox.Show("Acceso concedido. Bienvenido " + SesionUsuario.NombreCargo);
+
+                // Redireccionar según el cargo
+                RedireccionarPorCargo(idCargo);
+
                 this.Hide();
             }
             else
@@ -90,15 +99,17 @@ namespace SistemaVenta
 
         private bool ValidarUsuario(string codigo, string password, int idCargo)
         {
-                bool usuarioValido = false;
-                string consulta = @"
-            SELECT U.IdUsuario 
-            FROM USUARIO U
-            WHERE U.Codigo = @codigo 
-              AND U.Password = @password
-              AND U.IdCargo = @idCargo
-              AND U.EstadoUsuario = 1;
-                ";
+            bool usuarioValido = false;
+            string consulta = @"
+                SELECT U.IdUsuario, U.Codigo, U.IdCargo, C.NombreCargo
+                FROM USUARIO U
+                INNER JOIN CARGO C ON U.IdCargo = C.IdCargo
+                WHERE U.Codigo = @codigo 
+                  AND U.Password = @password
+                  AND U.IdCargo = @idCargo
+                  AND U.EstadoUsuario = 1
+                  AND C.EstadoCargo = 1;
+            ";
 
             try
             {
@@ -110,11 +121,18 @@ namespace SistemaVenta
                         cmd.Parameters.AddWithValue("@password", password);
                         cmd.Parameters.AddWithValue("@idCargo", idCargo);
 
-                        var resultado = cmd.ExecuteScalar();
-
-                        if (resultado != null)
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
-                            usuarioValido = true;
+                            if (reader.Read())
+                            {
+                                // Guardar información de sesión
+                                SesionUsuario.IdUsuario = reader.GetInt32("IdUsuario");
+                                SesionUsuario.Codigo = reader.GetString("Codigo");
+                                SesionUsuario.IdCargo = reader.GetInt32("IdCargo");
+                                SesionUsuario.NombreCargo = reader.GetString("NombreCargo");
+
+                                usuarioValido = true;
+                            }
                         }
                     }
                 }
@@ -127,6 +145,59 @@ namespace SistemaVenta
             return usuarioValido;
         }
 
+        private void RedireccionarPorCargo(int idCargo)
+        {
+            switch (idCargo)
+            {
+                case 11: // Administrador
+                    Menu_general formAdmin = new Menu_general();
+                    formAdmin.Show();
+                    break;
 
+                case 12: // Gerente General
+                    Menu_gerente formGerente = new Menu_gerente();
+                    formGerente.Show();
+                    break;
+
+                case 1: // Vendedor
+                case 2: // Cajero
+                case 3: // Encargado de Almacén
+                case 4: // Asistente Administrativo
+                case 5: // Soporte Técnico
+                case 6: // Gerente de Tienda
+                case 7: // Supervisor de Ventas
+                case 8: // Recepcionista
+                case 9: // Limpieza y Mantenimiento
+                case 10: // Seguridad
+                    Menu_general formGeneral = new Menu_general();
+                    formGeneral.Show();
+                    break;
+
+                default:
+                    MessageBox.Show("Cargo no reconocido. Redirigiendo al menú general.");
+                    Menu_general formDefault = new Menu_general();
+                    formDefault.Show();
+                    break;
+            }
+        }
     }
+    // Clase estática para manejar la sesión del usuario
+    public static class SesionUsuario
+    {
+        public static int IdUsuario { get; set; }
+        public static string Codigo { get; set; }
+        public static int IdCargo { get; set; }
+        public static string NombreCargo { get; set; }
+
+        // Método para limpiar la sesión al cerrar sesión
+        public static void LimpiarSesion()
+        {
+            IdUsuario = 0;
+            Codigo = string.Empty;
+            IdCargo = 0;
+            NombreCargo = string.Empty;
+        }
+    }
+
 }
+

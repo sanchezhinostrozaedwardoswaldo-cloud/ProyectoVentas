@@ -135,6 +135,12 @@
     <Compile Include="Menu_general.Designer.cs">
       <DependentUpon>Menu_general.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menu_gerente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu_gerente.Designer.cs">
+      <DependentUpon>Menu_gerente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pagos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menu_general.resx">
       <DependentUpon>Menu_general.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu_gerente.resx">
+      <DependentUpon>Menu_gerente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pagos.resx">
       <DependentUpon>Pagos.cs</DependentUpon>
@@ -409,6 +418,7 @@
     <Content Include="BD\db_tecnovera.sql" />
     <Content Include="BD\registro_de_distritos.sql" />
     <Content Include="BD\vistas.sql" />
+    <None Include="Resources\WhatsApp Image 2025-10-07 at 7.19.04 PM.jpeg" />
     <None Include="Resources\Diseño sin título2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
