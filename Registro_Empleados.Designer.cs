@@ -346,6 +346,7 @@
             this.BTNEXCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BTNEXCEL.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BTNEXCEL.UseVisualStyleBackColor = true;
+            this.BTNEXCEL.Click += new System.EventHandler(this.BTNEXCEL_Click);
             // 
             // BTNPDF
             // 
@@ -359,6 +360,7 @@
             this.BTNPDF.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BTNPDF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BTNPDF.UseVisualStyleBackColor = true;
+            this.BTNPDF.Click += new System.EventHandler(this.BTNPDF_Click);
             // 
             // dateTimecontrato
             // 

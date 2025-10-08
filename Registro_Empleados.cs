@@ -1,9 +1,12 @@
-﻿using MySql.Data.MySqlClient;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +43,7 @@ namespace SistemaVenta
                 dataGridView1.EnableHeadersVisualStyles = false;
                 dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkBlue;
                 dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-                dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+                dataGridView1.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10, FontStyle.Bold);
 
                 conexionBD.CerrarConexion();
             }
@@ -52,6 +55,7 @@ namespace SistemaVenta
 
         private void Registro_Empleados_Load(object sender, EventArgs e)
         {
+
             conexionBD.LlenarComboBox(
             comboBoxtipodocumento,
             "SELECT IdTipoDocumento, NombreDocumento FROM TIPO_DOCUMENTO",
@@ -233,6 +237,16 @@ namespace SistemaVenta
                 }
 
             }
+        }
+
+        private void BTNEXCEL_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAExcel(dataGridView1, "Empleados");
+        }
+
+        private void BTNPDF_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAPdf(dataGridView1, "Reporte de Empleados", "Empleados");
         }
     }
 }
