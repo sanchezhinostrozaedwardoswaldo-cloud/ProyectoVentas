@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -39,7 +41,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::SistemaVenta.Properties.Resources._4;
-            this.pictureBox3.Location = new System.Drawing.Point(739, 100);
+            this.pictureBox3.Location = new System.Drawing.Point(739, 90);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(257, 444);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -48,8 +50,8 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::SistemaVenta.Properties.Resources._5;
-            this.pictureBox2.Location = new System.Drawing.Point(410, 100);
+            this.pictureBox2.Image = global::SistemaVenta.Properties.Resources.monitor;
+            this.pictureBox2.Location = new System.Drawing.Point(410, 90);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(257, 444);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -59,12 +61,18 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::SistemaVenta.Properties.Resources._1;
-            this.pictureBox1.Location = new System.Drawing.Point(85, 100);
+            this.pictureBox1.Location = new System.Drawing.Point(85, 90);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(257, 444);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 300;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // PRODUCTOS
             // 
@@ -78,6 +86,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PRODUCTOS";
             this.Text = "PRODUCTOS";
+            this.Load += new System.EventHandler(this.PRODUCTOS_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -90,5 +99,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Timer timer1;
     }
 }

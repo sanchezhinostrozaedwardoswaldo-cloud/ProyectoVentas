@@ -459,6 +459,12 @@
     <Content Include="BD\procedimientos.sql" />
     <Content Include="BD\registro_de_distritos.sql" />
     <Content Include="BD\vistas.sql" />
+    <Content Include="Resources\3.jpg" />
+    <Content Include="Resources\consola.jpg" />
+    <Content Include="Resources\mouse.jpg" />
+    <Content Include="Resources\teclado.jpg" />
+    <None Include="Resources\camara.jpg" />
+    <None Include="Resources\monitor.jpg" />
     <None Include="Resources\4.jpg" />
     <None Include="Resources\5.jpg" />
     <None Include="Resources\1.jpg" />
