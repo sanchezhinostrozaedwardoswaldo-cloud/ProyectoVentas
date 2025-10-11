@@ -8,19 +8,94 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Drawing.Drawing2D;
 
 namespace SistemaVenta
 {
     public partial class Menu_general : Form
     {
+        private Point originalPosition;
+
         public Menu_general()
         {
             InitializeComponent();
+            this.Shown += PRODUCTOS_Shown;
+            this.Shown += Menu_general_Shown;  // para cuando se muestre el formulario
+            this.Resize += Menu_general_Resize; // para cuando se cambie el tamaño
+            this.SizeChanged += Menu_general_SizeChanged;
+            this.Activated += Menu_general_Activated;
         }
 
-        private void Menu_general_Load(object sender, EventArgs e)
+        private void Menu_general_Shown(object sender, EventArgs e)
         {
+            // Guardamos la posición original del botón
+            AplicarEsquinasRedondeadas();
+            originalPosition = button100.Location;
+        }
 
+        private void Menu_general_Activated(object sender, EventArgs e)
+        {
+            AplicarEsquinasRedondeadas();
+        }
+
+        private void Menu_general_Resize(object sender, EventArgs e)
+        {
+            int radio = 25;
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddArc(0, 0, radio, radio, 180, 90);
+            path.AddArc(button100.Width - radio, 0, radio, radio, 270, 90);
+            path.AddArc(button100.Width - radio, button100.Height - radio, radio, radio, 0, 90);
+            path.AddArc(0, button100.Height - radio, radio, radio, 90, 90);
+            path.CloseAllFigures();
+            button100.Region = new Region(path);
+
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                // Esquina inferior izquierda al maximizar
+                button100.Left = 182;
+                button100.Top = this.ClientSize.Height - button100.Height - 310;
+
+                // 🔹 Aumentar tamaño al maximizar
+                button100.Width = 260;   // nuevo ancho (ajusta según quieras)
+                button100.Height = 70;   // nueva altura
+                button100.Font = new Font(button100.Font.FontFamily, 16, FontStyle.Bold); // aumenta el texto
+            }
+            else if (this.WindowState == FormWindowState.Normal)
+            {
+                // Vuelve a su posición original al restaurar
+                button100.Left = 117;
+                button100.Top = this.ClientSize.Height - button100.Height - 220;
+
+                // 🔹 Regresa a su tamaño original
+                button100.Width = 160;   // ancho original
+                button100.Height = 40;   // alto original
+                button100.Font = new Font(button100.Font.FontFamily, 12, FontStyle.Regular); // tamaño de texto original
+
+            }
+            AplicarEsquinasRedondeadas();
+        }
+
+
+        private void Menu_general_Load(object sender, EventArgs e)
+        {   
+
+        }
+
+        private void PRODUCTOS_Shown(object sender, EventArgs e)
+        {
+            RedondearBoton(button100, 40); // ejemplo con button1
+        }
+
+        private void RedondearBoton(Button boton, int radio)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radio, radio, 180, 90);
+            path.AddArc(boton.Width - radio, 0, radio, radio, 270, 90);
+            path.AddArc(boton.Width - radio, boton.Height - radio, radio, radio, 0, 90);
+            path.AddArc(0, boton.Height - radio, radio, radio, 90, 90);
+            path.CloseAllFigures();
+
+            boton.Region = new Region(path);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -48,6 +123,7 @@ namespace SistemaVenta
             this.WindowState = FormWindowState.Minimized;
 
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -151,6 +227,32 @@ namespace SistemaVenta
 
             // Refrescar el panel para asegurar que se muestre correctamente
             panelContenedor.Refresh();
+        }
+
+        private void MostrarFondo()
+        {
+            // Cierra cualquier formulario que esté en el panel
+            foreach (Control ctrl in panelContenedor.Controls)
+            {
+                if (ctrl is Form form)
+                {
+                    form.Close();
+                    form.Dispose();
+                }
+            }
+
+            panelContenedor.Controls.Clear();
+
+            // Muestra el PictureBox3 como fondo
+            pictureBox3.Visible = true;
+            pictureBox3.Dock = DockStyle.Fill;
+            panelContenedor.Controls.Add(pictureBox3);
+            pictureBox3.BringToFront();
+
+            // 🔹 Traer también el botón
+            button100.Visible = true;
+            button100.Parent = panelContenedor;  // lo movemos al panel
+            button100.BringToFront();
         }
 
         private void btnLoginAcceso_Click(object sender, EventArgs e)
@@ -291,7 +393,290 @@ namespace SistemaVenta
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            
+            MostrarFondo();
         }
+
+        private void MenuVertical_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Barra_titulo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void SubmenuInicio_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel19_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel20_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel21_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel22_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void SubmenuPersonas_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel28_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel29_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel24_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel25_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel26_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel27_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void SubmenuProductos_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel33_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel34_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void SubmenuVentas_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel32_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel35_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel36_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel37_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void SubmenuCompras_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel39_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel40_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void SubmenuInventarioAlmacen_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel42_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel43_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel44_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel45_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel46_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel47_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel16_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel17_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel9_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel10_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel15_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new PRODUCTOS());
+        }
+
+        private void Menu_general_SizeChanged(object sender, EventArgs e)
+        {
+
+            // Detectar el estado de la ventana
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                // 🔹 Aumentar tamaño al maximizar
+                button100.Width = 260;
+                button100.Height = 70;
+                button100.Font = new Font(button100.Font.FontFamily, 16, FontStyle.Bold);
+
+                // 🔹 Posicionar en la esquina inferior izquierda
+                button100.Left = 182;
+                button100.Top = this.ClientSize.Height - button100.Height - 310;
+
+            }
+            else if (this.WindowState == FormWindowState.Normal)
+            {
+                // 🔹 Regresar a tamaño original
+                button100.Width = 161;
+                button100.Height = 44;
+                button100.Font = new Font(button100.Font.FontFamily, 12, FontStyle.Bold);
+
+                // 🔹 Posición original
+                button100.Left = 118;
+                button100.Top = this.ClientSize.Height - button100.Height - 200;
+            }
+            AplicarEsquinasRedondeadas();
+
+        }
+        private void AplicarEsquinasRedondeadas()
+        {
+            int radio = 40;
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddArc(0, 0, radio, radio, 180, 90);
+            path.AddArc(button100.Width - radio, 0, radio, radio, 270, 90);
+            path.AddArc(button100.Width - radio, button100.Height - radio, radio, radio, 0, 90);
+            path.AddArc(0, button100.Height - radio, radio, radio, 90, 90);
+            path.CloseAllFigures();
+            button100.Region = new Region(path);
+        }
+
     }
 }
