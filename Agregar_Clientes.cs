@@ -152,5 +152,10 @@ namespace SistemaVenta
         {
             conexionBD.ExportarAExcel(dataGridView1, "Clientes");
         }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

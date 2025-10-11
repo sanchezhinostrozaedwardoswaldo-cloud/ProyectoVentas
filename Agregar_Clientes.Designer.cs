@@ -119,9 +119,10 @@
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(136, 23);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(210, 15);
+            this.label8.Size = new System.Drawing.Size(190, 15);
             this.label8.TabIndex = 25;
-            this.label8.Text = "Ingresar nombre del Proveedor:";
+            this.label8.Text = "Ingresar nombre del Cliente:\r\n";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label7
             // 
