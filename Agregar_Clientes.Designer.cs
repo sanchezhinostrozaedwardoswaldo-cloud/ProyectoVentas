@@ -31,7 +31,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtbuscarClientes = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtcodigo = new System.Windows.Forms.TextBox();
@@ -85,7 +85,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.textBox6);
+            this.panel2.Controls.Add(this.txtbuscarClientes);
             this.panel2.Controls.Add(this.label8);
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel2.Location = new System.Drawing.Point(37, 270);
@@ -105,12 +105,13 @@
             this.label9.TabIndex = 26;
             this.label9.Text = "    BUSCAR";
             // 
-            // textBox6
+            // txtbuscarClientes
             // 
-            this.textBox6.Location = new System.Drawing.Point(383, 22);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(345, 20);
-            this.textBox6.TabIndex = 24;
+            this.txtbuscarClientes.Location = new System.Drawing.Point(383, 22);
+            this.txtbuscarClientes.Name = "txtbuscarClientes";
+            this.txtbuscarClientes.Size = new System.Drawing.Size(345, 20);
+            this.txtbuscarClientes.TabIndex = 24;
+            this.txtbuscarClientes.TextChanged += new System.EventHandler(this.txtbuscarClientes_TextChanged);
             // 
             // label8
             // 
@@ -262,6 +263,7 @@
             this.BTNDARBAJA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BTNDARBAJA.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BTNDARBAJA.UseVisualStyleBackColor = true;
+            this.BTNDARBAJA.Click += new System.EventHandler(this.BTNDARBAJA_Click);
             // 
             // BTNMODIFICAR
             // 
@@ -276,6 +278,7 @@
             this.BTNMODIFICAR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BTNMODIFICAR.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BTNMODIFICAR.UseVisualStyleBackColor = true;
+            this.BTNMODIFICAR.Click += new System.EventHandler(this.BTNMODIFICAR_Click);
             // 
             // BTN_MOSTRARCLIENTES
             // 
@@ -307,6 +310,7 @@
             this.BTNGUARDAR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BTNGUARDAR.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BTNGUARDAR.UseVisualStyleBackColor = true;
+            this.BTNGUARDAR.Click += new System.EventHandler(this.BTNGUARDAR_Click);
             // 
             // BTNNUEVO
             // 
@@ -321,6 +325,7 @@
             this.BTNNUEVO.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BTNNUEVO.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BTNNUEVO.UseVisualStyleBackColor = true;
+            this.BTNNUEVO.Click += new System.EventHandler(this.BTNNUEVO_Click);
             // 
             // label6
             // 
@@ -536,7 +541,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtbuscarClientes;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button BTNEXCEL;
         private System.Windows.Forms.Button BTNPDF;

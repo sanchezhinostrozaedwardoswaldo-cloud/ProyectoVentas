@@ -456,6 +456,7 @@
   <ItemGroup>
     <Content Include="BD\dbTecnovera.sql" />
     <Content Include="BD\db_tecnovera.sql" />
+    <Content Include="BD\procedimientos.sql" />
     <Content Include="BD\registro_de_distritos.sql" />
     <Content Include="BD\vistas.sql" />
     <None Include="Resources\4.jpg" />

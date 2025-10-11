@@ -12,7 +12,7 @@ namespace SistemaVenta
     public class conexion_bd
     {
         //Campo de conexión
-        private MySqlConnection conexion;
+        public MySqlConnection conexion;
 
         //Cadena de conexion a MySql local (XAMPP)
         private String cadenaConexion = "Server=localhost;Port=3306;Database=db_tecnovera;UId=root;Pwd=;SslMode=none;";
@@ -294,6 +294,183 @@ namespace SistemaVenta
             }
         }
 
+        // =============================================
+        // MÉTODO PARA BUSCAR CLIENTES
+        // =============================================
+        public DataTable BuscarCliente(string criterio)
+        {
+            DataTable tabla = new DataTable();
+
+            try
+            {
+                MySqlConnection conexionActual = AbrirConexion();
+                MySqlCommand cmd = new MySqlCommand("sp_buscar_cliente", conexionActual);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@p_criterio", string.IsNullOrEmpty(criterio) ? (object)DBNull.Value : criterio);
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                adapter.Fill(tabla);
+
+                CerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                CerrarConexion();
+                throw new Exception("Error al buscar clientes: " + ex.Message);
+            }
+
+            return tabla;
+        }
+
+        // =============================================
+        // MÉTODO PARA INSERTAR CLIENTE
+        // =============================================
+        public bool InsertarCliente(
+            int idTipoDocumento,
+            string numeroDocumento,
+            int idDistrito,
+            string nombreCliente,
+            string apellidosCliente,
+            string direccion,
+            string telefono,
+            string correo,
+            out string mensaje)
+        {
+            bool resultado = false;
+            mensaje = string.Empty;
+
+            try
+            {
+                MySqlConnection conexionActual = AbrirConexion();
+                MySqlCommand cmd = new MySqlCommand("sp_insertar_cliente", conexionActual);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@p_IdTipoDocumento", idTipoDocumento);
+                cmd.Parameters.AddWithValue("@p_NumeroDocumento", numeroDocumento);
+                cmd.Parameters.AddWithValue("@p_IdDistrito", idDistrito);
+                cmd.Parameters.AddWithValue("@p_NombreCliente", nombreCliente);
+                cmd.Parameters.AddWithValue("@p_ApellidosCliente", apellidosCliente);
+                cmd.Parameters.AddWithValue("@p_Direccion", direccion);
+                cmd.Parameters.AddWithValue("@p_Telefono", telefono);
+                cmd.Parameters.AddWithValue("@p_Correo", string.IsNullOrEmpty(correo) ? (object)DBNull.Value : correo);
+
+                cmd.Parameters.Add("@p_resultado", MySqlDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("@p_mensaje", MySqlDbType.VarChar, 200).Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                int resultadoId = Convert.ToInt32(cmd.Parameters["@p_resultado"].Value);
+                mensaje = cmd.Parameters["@p_mensaje"].Value.ToString();
+
+                resultado = resultadoId > 0;
+
+                CerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                CerrarConexion();
+                mensaje = "Error al insertar cliente: " + ex.Message;
+                resultado = false;
+            }
+
+            return resultado;
+        }
+
+        // =============================================
+        // MÉTODO PARA MODIFICAR CLIENTE
+        // =============================================
+        public bool ModificarCliente(
+            int idCliente,
+            int idTipoDocumento,
+            string numeroDocumento,
+            int idDistrito,
+            string nombreCliente,
+            string apellidosCliente,
+            string direccion,
+            string telefono,
+            string correo,
+            out string mensaje)
+        {
+            bool resultado = false;
+            mensaje = string.Empty;
+
+            try
+            {
+                MySqlConnection conexionActual = AbrirConexion();
+                MySqlCommand cmd = new MySqlCommand("sp_modificar_cliente", conexionActual);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@p_IdCliente", idCliente);
+                cmd.Parameters.AddWithValue("@p_IdTipoDocumento", idTipoDocumento);
+                cmd.Parameters.AddWithValue("@p_NumeroDocumento", numeroDocumento);
+                cmd.Parameters.AddWithValue("@p_IdDistrito", idDistrito);
+                cmd.Parameters.AddWithValue("@p_NombreCliente", nombreCliente);
+                cmd.Parameters.AddWithValue("@p_ApellidosCliente", apellidosCliente);
+                cmd.Parameters.AddWithValue("@p_Direccion", direccion);
+                cmd.Parameters.AddWithValue("@p_Telefono", telefono);
+                cmd.Parameters.AddWithValue("@p_Correo", string.IsNullOrEmpty(correo) ? (object)DBNull.Value : correo);
+
+                cmd.Parameters.Add("@p_resultado", MySqlDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("@p_mensaje", MySqlDbType.VarChar, 200).Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                int resultadoValor = Convert.ToInt32(cmd.Parameters["@p_resultado"].Value);
+                mensaje = cmd.Parameters["@p_mensaje"].Value.ToString();
+
+                resultado = resultadoValor > 0;
+
+                CerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                CerrarConexion();
+                mensaje = "Error al modificar cliente: " + ex.Message;
+                resultado = false;
+            }
+
+            return resultado;
+        }
+
+        // =============================================
+        // MÉTODO PARA ELIMINAR CLIENTE
+        // =============================================
+        public bool EliminarCliente(int idCliente, out string mensaje)
+        {
+            bool resultado = false;
+            mensaje = string.Empty;
+
+            try
+            {
+                MySqlConnection conexionActual = AbrirConexion();
+                MySqlCommand cmd = new MySqlCommand("sp_eliminar_cliente", conexionActual);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@p_IdCliente", idCliente);
+
+                cmd.Parameters.Add("@p_resultado", MySqlDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("@p_mensaje", MySqlDbType.VarChar, 200).Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                int resultadoValor = Convert.ToInt32(cmd.Parameters["@p_resultado"].Value);
+                mensaje = cmd.Parameters["@p_mensaje"].Value.ToString();
+
+                resultado = resultadoValor > 0;
+
+                CerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                CerrarConexion();
+                mensaje = "Error al eliminar cliente: " + ex.Message;
+                resultado = false;
+            }
+
+            return resultado;
+        }
     }
+
 }
 
