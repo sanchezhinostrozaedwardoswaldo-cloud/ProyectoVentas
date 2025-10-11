@@ -20,10 +20,14 @@ namespace SistemaVenta
         public Registro_Empleados()
         {
             InitializeComponent();
+            BTNEXCEL.Enabled = false;
+            BTNPDF.Enabled = false;
         }
 
         private void BTN_MOSTRARCLIENTES_Click(object sender, EventArgs e)
         {
+            BTNEXCEL.Enabled = true;
+            BTNPDF.Enabled = true;
             try
             {
                 MySqlConnection conexion = conexionBD.AbrirConexion();

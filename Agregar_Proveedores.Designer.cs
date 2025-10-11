@@ -179,6 +179,7 @@
             this.BTNEXCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BTNEXCEL.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BTNEXCEL.UseVisualStyleBackColor = true;
+            this.BTNEXCEL.Click += new System.EventHandler(this.BTNEXCEL_Click);
             // 
             // BTNPDF
             // 
@@ -193,6 +194,7 @@
             this.BTNPDF.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BTNPDF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BTNPDF.UseVisualStyleBackColor = true;
+            this.BTNPDF.Click += new System.EventHandler(this.BTNPDF_Click);
             // 
             // panel2
             // 
@@ -385,6 +387,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Agregar_Proveedores";
             this.Text = "Agregar_Proveedores";
+            this.Load += new System.EventHandler(this.Agregar_Proveedores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

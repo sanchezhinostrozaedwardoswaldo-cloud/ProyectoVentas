@@ -17,6 +17,8 @@ namespace SistemaVenta
         public Inventario()
         {
             InitializeComponent();
+            BTNEXCEL.Enabled = false;
+            BTNPDF.Enabled = false;
         }
 
         private void Inventario_Load(object sender, EventArgs e)
@@ -66,6 +68,8 @@ namespace SistemaVenta
 
         private void button1_Click(object sender, EventArgs e)
         {
+            BTNEXCEL.Enabled = true;
+            BTNPDF.Enabled = true;
             try
             {
                 MySqlConnection conexion = conexionBD.AbrirConexion();
@@ -126,6 +130,16 @@ namespace SistemaVenta
 
 
             }
+        }
+
+        private void BTNPDF_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAPdf(dataGridView1, "Reporte de Inventario", "Inventario");
+        }
+
+        private void BTNEXCEL_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAExcel(dataGridView1, "Inventario");
         }
     }
 }

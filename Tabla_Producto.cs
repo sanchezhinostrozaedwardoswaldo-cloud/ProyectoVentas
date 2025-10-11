@@ -17,10 +17,15 @@ namespace SistemaVenta
         public Tabla_Producto()
         {
             InitializeComponent();
+            BTNEXCEL.Enabled = false;
+            BTNPDF.Enabled = false;
         }
 
         private void BTNMOSTRARPROVEEDORES_Click(object sender, EventArgs e)
         {
+            BTNEXCEL.Enabled = true;
+            BTNPDF.Enabled = true;
+
             try
             {
                 MySqlConnection conexion = conexionBD.AbrirConexion();
@@ -92,6 +97,16 @@ namespace SistemaVenta
                 comboBoxmodelo.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString();
 
             }
+        }
+
+        private void BTNEXCEL_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAExcel(dataGridView1, "Productos");
+        }
+
+        private void BTNPDF_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAPdf(dataGridView1, "Reporte de Productos", "Productos");
         }
     }
 }

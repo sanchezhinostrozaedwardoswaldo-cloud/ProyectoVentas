@@ -12,6 +12,8 @@ namespace SistemaVenta
         public Agregar_Clientes()
         {
             InitializeComponent();
+            BTNEXCEL.Enabled = false;
+            BTNPDF.Enabled = false;
         }
 
         private void Agregar_Clientes_Load(object sender, EventArgs e)
@@ -35,6 +37,8 @@ namespace SistemaVenta
 
         private void BTN_MOSTRARCLIENTES_Click(object sender, EventArgs e)
         {
+            BTNEXCEL.Enabled = true;
+            BTNPDF.Enabled = true;
             try
             {
                 MySqlConnection conexion = conexionBD.AbrirConexion();
@@ -137,6 +141,16 @@ namespace SistemaVenta
                     "id_distrito"
                 );
             }
+        }
+
+        private void BTNPDF_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAPdf(dataGridView1, "Reporte de Clientes", "Clientes");
+        }
+
+        private void BTNEXCEL_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAExcel(dataGridView1, "Clientes");
         }
     }
 }

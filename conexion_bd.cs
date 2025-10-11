@@ -73,58 +73,82 @@ namespace SistemaVenta
         }
 
         // 🔹 Exportar DataGridView a Excel usando ClosedXML
-        public void ExportarAExcel(DataGridView dgv, string nombreArchivo = "Exportacion")
+        public void ExportarAExcel(DataGridView dgv, string titulo = "Reporte", string nombreArchivo = "Exportacion")
         {
             try
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog
                 {
-                    Filter = "Archivos Excel (*.xlsx)|*.xlsx",
+                    Filter = "Archivos de Excel (*.xlsx)|*.xlsx",
                     Title = "Guardar como Excel",
                     FileName = $"{nombreArchivo}_{DateTime.Now:yyyyMMdd_HHmmss}"
                 };
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    using (XLWorkbook wb = new XLWorkbook())
+                    using (var wb = new ClosedXML.Excel.XLWorkbook())
                     {
                         var ws = wb.Worksheets.Add("Datos");
 
+                        // 🔸 Insertar título
+                        ws.Cell(1, 1).Value = titulo;
+                        ws.Range(1, 1, 1, dgv.Columns.Count).Merge();
+                        ws.Cell(1, 1).Style.Font.Bold = true;
+                        ws.Cell(1, 1).Style.Font.FontSize = 16;
+                        ws.Cell(1, 1).Style.Alignment.Horizontal = ClosedXML.Excel.XLAlignmentHorizontalValues.Center;
+                        ws.Row(1).Height = 25;
+
+                        // 🔸 Fecha
+                        ws.Cell(2, 1).Value = "Fecha: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                        ws.Range(2, 1, 2, dgv.Columns.Count).Merge();
+                        ws.Cell(2, 1).Style.Alignment.Horizontal = ClosedXML.Excel.XLAlignmentHorizontalValues.Right;
+                        ws.Cell(2, 1).Style.Font.FontSize = 10;
+
                         // 🔸 Encabezados
                         int colIndex = 1;
+                        int startRow = 4;
                         foreach (DataGridViewColumn col in dgv.Columns)
                         {
                             if (col.Visible)
                             {
-                                ws.Cell(1, colIndex).Value = col.HeaderText;
-                                ws.Cell(1, colIndex).Style.Font.Bold = true;
-                                ws.Cell(1, colIndex).Style.Fill.BackgroundColor = XLColor.DarkBlue;
-                                ws.Cell(1, colIndex).Style.Font.FontColor = XLColor.White;
-                                ws.Cell(1, colIndex).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                                ws.Cell(startRow, colIndex).Value = col.HeaderText;
+                                ws.Cell(startRow, colIndex).Style.Font.Bold = true;
+                                ws.Cell(startRow, colIndex).Style.Fill.BackgroundColor = ClosedXML.Excel.XLColor.DarkBlue;
+                                ws.Cell(startRow, colIndex).Style.Font.FontColor = ClosedXML.Excel.XLColor.White;
+                                ws.Cell(startRow, colIndex).Style.Alignment.Horizontal = ClosedXML.Excel.XLAlignmentHorizontalValues.Center;
                                 colIndex++;
                             }
                         }
 
                         // 🔸 Datos
-                        int rowIndex = 2;
+                        int fila = startRow + 1;
                         foreach (DataGridViewRow row in dgv.Rows)
                         {
                             if (!row.IsNewRow)
                             {
-                                colIndex = 1;
-                                foreach (DataGridViewColumn col in dgv.Columns)
+                                int col = 1;
+                                foreach (DataGridViewCell cell in row.Cells)
                                 {
-                                    if (col.Visible)
+                                    if (dgv.Columns[cell.ColumnIndex].Visible)
                                     {
-                                        ws.Cell(rowIndex, colIndex).Value = row.Cells[col.Index].Value?.ToString() ?? "";
-                                        colIndex++;
+                                        ws.Cell(fila, col).Value = cell.Value?.ToString() ?? "";
+                                        col++;
                                     }
                                 }
-                                rowIndex++;
+                                fila++;
                             }
                         }
 
-                        ws.Columns().AdjustToContents(); // Ajusta el ancho automáticamente
+                        // 🔸 Ajustar ancho de columnas
+                        ws.Columns().AdjustToContents();
+
+                        // 🔸 Detectar orientación automática
+                        if (dgv.Columns.Count > 6 || dgv.Rows.Count > 25)
+                            ws.PageSetup.PageOrientation = ClosedXML.Excel.XLPageOrientation.Landscape;
+                        else
+                            ws.PageSetup.PageOrientation = ClosedXML.Excel.XLPageOrientation.Portrait;
+
+                        // 🔸 Guardar archivo
                         wb.SaveAs(saveFileDialog.FileName);
                     }
 
@@ -142,6 +166,8 @@ namespace SistemaVenta
             }
         }
 
+
+
         // 🔹 Exportar DataGridView a PDF usando iTextSharp
         public void ExportarAPdf(DataGridView dgv, string titulo = "Reporte", string nombreArchivo = "Exportacion")
         {
@@ -156,11 +182,33 @@ namespace SistemaVenta
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
+                    // 🔸 Detectar orientación automática
+                    Rectangle orientacion = PageSize.A4;
+                    if (dgv.Columns.Count > 6 || dgv.Rows.Count > 25)
+                        orientacion = PageSize.A4.Rotate(); // Horizontal si hay muchas columnas o filas
+
                     using (FileStream stream = new FileStream(saveFileDialog.FileName, FileMode.Create))
                     {
-                        Document doc = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
+                        Document doc = new Document(orientacion, 10, 10, 10, 10);
                         PdfWriter.GetInstance(doc, stream);
                         doc.Open();
+
+                        // 🔸 Agregar imagen en una esquina (arriba a la izquierda)
+                        // 🔸 Obtener ruta del proyecto (subiendo desde bin/Debug hasta la raíz)
+                        string rutaProyecto = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\..\SistemaVentas"));
+
+                        // 🔸 Combinar con la carpeta Resources y el nombre del archivo
+                        string rutaImagen = Path.Combine(rutaProyecto, "Resources", "logo.jpeg");
+                        MessageBox.Show(rutaImagen);
+
+                        // 🔸 Agregar imagen en una esquina (arriba a la izquierda)
+                        if (File.Exists(rutaImagen))
+                        {
+                            iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(rutaImagen);
+                            logo.ScaleToFit(80f, 80f);
+                            logo.SetAbsolutePosition(doc.LeftMargin, orientacion.Height - 90f); // esquina superior izquierda
+                            doc.Add(logo);
+                        }
 
                         // 🔸 Título
                         iTextSharp.text.Font tituloFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16);
@@ -245,6 +293,7 @@ namespace SistemaVenta
                 MessageBox.Show("Error al exportar a PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }
 

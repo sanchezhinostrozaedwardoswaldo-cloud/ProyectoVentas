@@ -17,6 +17,8 @@ namespace SistemaVenta
         public Pedidos()
         {
             InitializeComponent();
+            BTNEXCEL.Enabled = false;
+            BTNPDF.Enabled = false;
         }
 
         private void label8_Click(object sender, EventArgs e)
@@ -26,6 +28,8 @@ namespace SistemaVenta
 
         private void button1_Click(object sender, EventArgs e)
         {
+            BTNEXCEL.Enabled = true;
+            BTNPDF.Enabled = true;
             try
             {
                 MySqlConnection conexion = conexionBD.AbrirConexion();
@@ -123,6 +127,16 @@ namespace SistemaVenta
             "IdCargo"
             );
 
+        }
+
+        private void BTNEXCEL_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAExcel(dataGridView1, "Pedidos");
+        }
+
+        private void BTNPDF_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAPdf(dataGridView1, "Reporte de Pedidos", "Pedidos");
         }
     }
 }

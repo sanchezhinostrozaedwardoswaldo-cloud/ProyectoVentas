@@ -17,10 +17,14 @@ namespace SistemaVenta
         public Compras()
         {
             InitializeComponent();
+            button5.Enabled = false;
+            button6.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            button5.Enabled = true;
+            button6.Enabled = true;
             try
             {
                 MySqlConnection conexion = conexionBD.AbrirConexion();
@@ -138,6 +142,16 @@ namespace SistemaVenta
             "NombreCargo",
             "IdCargo"
             );
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAPdf(dataGridView1, "Reporte de Compras", "Compras");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAExcel(dataGridView1, "Compras");
         }
     }
 }

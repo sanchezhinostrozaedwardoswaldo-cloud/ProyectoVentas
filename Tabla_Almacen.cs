@@ -17,6 +17,8 @@ namespace SistemaVenta
         public Tabla_Almacen()
         {
             InitializeComponent();
+            BTNEXCEL.Enabled = false;
+            BTNPDF.Enabled = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -66,6 +68,9 @@ namespace SistemaVenta
 
         private void BTNMOSTRARPROVEEDORES_Click(object sender, EventArgs e)
         {
+            BTNEXCEL.Enabled = true;
+            BTNPDF.Enabled = true;
+
             try
             {
                 MySqlConnection conexion = conexionBD.AbrirConexion();
@@ -161,6 +166,16 @@ namespace SistemaVenta
             }
 
             conexionBD.CerrarConexion();
+        }
+
+        private void BTNEXCEL_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAExcel(dataGridView1, "Almacen");
+        }
+
+        private void BTNPDF_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAPdf(dataGridView1, "Reporte de Almacen", "Almacen");
         }
     }
 }

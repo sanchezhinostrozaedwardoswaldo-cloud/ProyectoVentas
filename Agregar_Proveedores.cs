@@ -17,6 +17,8 @@ namespace SistemaVenta
         public Agregar_Proveedores()
         {
             InitializeComponent();
+            BTNEXCEL.Enabled = false;
+            BTNPDF.Enabled = false;
         }
 
         private void label8_Click(object sender, EventArgs e)
@@ -36,6 +38,8 @@ namespace SistemaVenta
 
         private void BTNMOSTRARPROVEEDORES_Click(object sender, EventArgs e)
         {
+            BTNEXCEL.Enabled = true;
+            BTNPDF.Enabled = true;
             try
             {
                 MySqlConnection conexion = conexionBD.AbrirConexion();
@@ -81,6 +85,21 @@ namespace SistemaVenta
                 txtdireccion.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
 
             }
+        }
+
+        private void Agregar_Proveedores_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BTNEXCEL_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAExcel(dataGridView1, "Proveedores");
+        }
+
+        private void BTNPDF_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAPdf(dataGridView1, "Reporte de Proveedores", "Proveedores");
         }
     }
 }

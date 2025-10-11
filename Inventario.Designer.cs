@@ -45,8 +45,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.BTNEXCEL = new System.Windows.Forms.Button();
+            this.BTNPDF = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -272,41 +272,43 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Ingrese el id nombre del producto";
             // 
-            // button6
+            // BTNEXCEL
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Image = global::SistemaVenta.Properties.Resources.archivo_excel;
-            this.button6.Location = new System.Drawing.Point(864, 578);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(161, 42);
-            this.button6.TabIndex = 19;
-            this.button6.Text = "EXPORTAR";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button6.UseVisualStyleBackColor = false;
+            this.BTNEXCEL.BackColor = System.Drawing.Color.White;
+            this.BTNEXCEL.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTNEXCEL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BTNEXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTNEXCEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.BTNEXCEL.ForeColor = System.Drawing.Color.Black;
+            this.BTNEXCEL.Image = global::SistemaVenta.Properties.Resources.archivo_excel;
+            this.BTNEXCEL.Location = new System.Drawing.Point(864, 578);
+            this.BTNEXCEL.Name = "BTNEXCEL";
+            this.BTNEXCEL.Size = new System.Drawing.Size(161, 42);
+            this.BTNEXCEL.TabIndex = 19;
+            this.BTNEXCEL.Text = "EXPORTAR";
+            this.BTNEXCEL.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BTNEXCEL.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BTNEXCEL.UseVisualStyleBackColor = false;
+            this.BTNEXCEL.Click += new System.EventHandler(this.BTNEXCEL_Click);
             // 
-            // button7
+            // BTNPDF
             // 
-            this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button7.ForeColor = System.Drawing.Color.Black;
-            this.button7.Image = global::SistemaVenta.Properties.Resources.archivo_pdf;
-            this.button7.Location = new System.Drawing.Point(639, 578);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(161, 42);
-            this.button7.TabIndex = 18;
-            this.button7.Text = "EXPORTAR";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button7.UseVisualStyleBackColor = false;
+            this.BTNPDF.BackColor = System.Drawing.Color.White;
+            this.BTNPDF.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTNPDF.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BTNPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTNPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.BTNPDF.ForeColor = System.Drawing.Color.Black;
+            this.BTNPDF.Image = global::SistemaVenta.Properties.Resources.archivo_pdf;
+            this.BTNPDF.Location = new System.Drawing.Point(639, 578);
+            this.BTNPDF.Name = "BTNPDF";
+            this.BTNPDF.Size = new System.Drawing.Size(161, 42);
+            this.BTNPDF.TabIndex = 18;
+            this.BTNPDF.Text = "EXPORTAR";
+            this.BTNPDF.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BTNPDF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BTNPDF.UseVisualStyleBackColor = false;
+            this.BTNPDF.Click += new System.EventHandler(this.BTNPDF_Click);
             // 
             // label9
             // 
@@ -470,8 +472,8 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.BTNEXCEL);
+            this.Controls.Add(this.BTNPDF);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button5);
@@ -514,8 +516,8 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button BTNEXCEL;
+        private System.Windows.Forms.Button BTNPDF;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label7;

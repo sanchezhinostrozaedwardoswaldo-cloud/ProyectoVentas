@@ -16,7 +16,7 @@ namespace SistemaVenta
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Pin_seguridad());
+            Application.Run(new Menu_general());
         }
     }
 }

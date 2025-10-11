@@ -17,6 +17,8 @@ namespace SistemaVenta
         public Pagos()
         {
             InitializeComponent();
+            BTNEXCEL.Enabled = false;
+            BTNPDF.Enabled = false;
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -26,6 +28,8 @@ namespace SistemaVenta
 
         private void button3_Click(object sender, EventArgs e)
         {
+            BTNEXCEL.Enabled = true;
+            BTNPDF.Enabled = true;
             try
             {
                 MySqlConnection conexion = conexionBD.AbrirConexion();
@@ -92,6 +96,16 @@ namespace SistemaVenta
                 txtmonto.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                 comboBoxtipopago.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             }
+        }
+
+        private void BTNEXCEL_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAExcel(dataGridView1, "Pagos");
+        }
+
+        private void BTNPDF_Click(object sender, EventArgs e)
+        {
+            conexionBD.ExportarAPdf(dataGridView1, "Reporte de Pagos", "Pagos");
         }
     }
 }

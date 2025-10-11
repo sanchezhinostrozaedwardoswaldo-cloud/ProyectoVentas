@@ -76,6 +76,8 @@ namespace SistemaVenta
 
         private void Login_seguridad_Load(object sender, EventArgs e)
         {
+            this.AcceptButton = btningresar;
+
             conexionBD.LlenarComboBox(
             comboBoxCargo,
             "SELECT IdCargo, NombreCargo FROM CARGO",

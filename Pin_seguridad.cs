@@ -31,7 +31,7 @@ namespace SistemaVenta
 
         private void Pin_seguridad_Load(object sender, EventArgs e)
         {
-
+            this.AcceptButton = btningresar;
         }
 
         private void button10_Click(object sender, EventArgs e)
