@@ -19,6 +19,7 @@ namespace SistemaVenta
             InitializeComponent();
             BTNEXCEL.Enabled = false;
             BTNPDF.Enabled = false;
+            txtcodigo.Enabled = false;
         }
 
         private void BTNMOSTRARPROVEEDORES_Click(object sender, EventArgs e)

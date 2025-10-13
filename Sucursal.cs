@@ -14,6 +14,7 @@ namespace SistemaVenta
             InitializeComponent();
             BTNEXCEL.Enabled = false;
             BTNPDF.Enabled = false;
+            txtcodigo.Enabled = false;
         }
 
         private void Sucursal_Load(object sender, EventArgs e)

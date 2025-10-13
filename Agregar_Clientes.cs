@@ -527,5 +527,10 @@ namespace SistemaVenta
 
             txtnombres.Focus();
         }
+
+        private void txtcodigo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
