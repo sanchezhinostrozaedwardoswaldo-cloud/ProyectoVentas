@@ -476,6 +476,8 @@
     <Content Include="Resources\consola.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\exit.png" />
+    <None Include="Resources\exit %281%29.png" />
     <Content Include="Resources\mouse.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -363,6 +363,26 @@ namespace SistemaVenta.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap exit {
+            get {
+                object obj = ResourceManager.GetObject("exit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exit__1_ {
+            get {
+                object obj = ResourceManager.GetObject("exit (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap guardar_instagram {
             get {
                 object obj = ResourceManager.GetObject("guardar-instagram", resourceCulture);

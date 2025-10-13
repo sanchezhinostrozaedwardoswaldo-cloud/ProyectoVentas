@@ -16,5 +16,10 @@ namespace SistemaVenta
         {
             InitializeComponent();
         }
+
+        private void radioButton8_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
