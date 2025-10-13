@@ -1,11 +1,13 @@
-﻿using ClosedXML.Excel; // 📦 Para Excel
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Data;
 using System.IO;
 using System.Windows.Forms;
+using ClosedXML.Excel; // 📦 Para Excel
+using DocumentFormat.OpenXml.Spreadsheet;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using MySql.Data.MySqlClient;
+using SistemaVenta.Properties;
 
 namespace SistemaVenta
 {
@@ -195,7 +197,7 @@ namespace SistemaVenta
 
                         // 🔸 Agregar imagen en una esquina (arriba a la izquierda)
                         // 🔸 Obtener ruta del proyecto (subiendo desde bin/Debug hasta la raíz)
-                        string rutaProyecto = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\..\SistemaVentas"));
+                        string rutaProyecto = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\..\proyectoventas"));
 
                         // 🔸 Combinar con la carpeta Resources y el nombre del archivo
                         string rutaImagen = Path.Combine(rutaProyecto, "Resources", "logo.jpeg");
