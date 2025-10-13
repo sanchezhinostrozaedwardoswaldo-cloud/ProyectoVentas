@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using SistemaVenta.Properties;
 
 namespace SistemaVenta
 {
@@ -30,25 +32,25 @@ namespace SistemaVenta
             // Bloque 1 (para pictureBox1)
             imagenes1 = new string[]
             {
-                @"C:\Users\51939\OneDrive\Documentos\SISTEMA\Resources\1.jpg",
-                @"C:\Users\51939\OneDrive\Documentos\SISTEMA\Resources\3.jpg",
-                @"C:\Users\51939\OneDrive\Documentos\SISTEMA\Resources\5.jpg"
+                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\1.jpg",
+                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\3.jpg",
+                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\5.jpg",
             };
 
             // Bloque 2 (para pictureBox2)
             imagenes2 = new string[]
             {
-                @"C:\Users\51939\OneDrive\Documentos\TRABAJOS - SENATI\PROYECTO_VENTAS\Resources\monitor.jpg",
-                @"C:\Users\51939\OneDrive\Documentos\TRABAJOS - SENATI\PROYECTO_VENTAS\Resources\teclado.jpg",
-                @"C:\Users\51939\OneDrive\Documentos\TRABAJOS - SENATI\PROYECTO_VENTAS\Resources\mouse.jpg"
+                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\monitor.jpg",
+                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\teclado.jpg",
+                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\mouse.jpg"
             };
 
             // Bloque 3 (para pictureBox3)
             imagenes3 = new string[]
             {
-                @"C:\Users\51939\OneDrive\Documentos\TRABAJOS - SENATI\PROYECTO_VENTAS\Resources\4.jpg",
-                @"C:\Users\51939\OneDrive\Documentos\TRABAJOS - SENATI\PROYECTO_VENTAS\Resources\camara.jpg",
-                @"C:\Users\51939\OneDrive\Documentos\TRABAJOS - SENATI\PROYECTO_VENTAS\Resources\consola.jpg"
+                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\4.jpg",
+                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\camara.jpg",
+                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\consola.jpg"
             };
 
             // Mostrar las primeras imágenes
