@@ -154,6 +154,12 @@
     <Compile Include="Inventario.Designer.cs">
       <DependentUpon>Inventario.cs</DependentUpon>
     </Compile>
+    <Compile Include="lista_clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="lista_clientes.Designer.cs">
+      <DependentUpon>lista_clientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login_seguridad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario.resx">
       <DependentUpon>Inventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lista_clientes.resx">
+      <DependentUpon>lista_clientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login_seguridad.resx">
       <DependentUpon>Login_seguridad.cs</DependentUpon>
@@ -473,6 +482,8 @@
     <Content Include="Resources\3.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\business-report.png" />
+    <None Include="Resources\business-report %281%29.png" />
     <Content Include="Resources\consola.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

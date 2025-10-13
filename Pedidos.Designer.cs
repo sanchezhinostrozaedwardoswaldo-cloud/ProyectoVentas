@@ -62,6 +62,7 @@
             this.comboBoxtipopago = new System.Windows.Forms.ComboBox();
             this.comboBoxempleado = new System.Windows.Forms.ComboBox();
             this.comboBoxcargo = new System.Windows.Forms.ComboBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -80,14 +81,14 @@
             // 
             // txtcodigo
             // 
-            this.txtcodigo.Location = new System.Drawing.Point(151, 48);
+            this.txtcodigo.Location = new System.Drawing.Point(133, 49);
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.Size = new System.Drawing.Size(259, 20);
             this.txtcodigo.TabIndex = 1;
             // 
             // txttelefono
             // 
-            this.txttelefono.Location = new System.Drawing.Point(151, 178);
+            this.txttelefono.Location = new System.Drawing.Point(133, 179);
             this.txttelefono.Name = "txttelefono";
             this.txttelefono.Size = new System.Drawing.Size(259, 20);
             this.txttelefono.TabIndex = 4;
@@ -166,14 +167,14 @@
             // 
             // txtcliente
             // 
-            this.txtcliente.Location = new System.Drawing.Point(151, 126);
+            this.txtcliente.Location = new System.Drawing.Point(133, 127);
             this.txtcliente.Name = "txtcliente";
             this.txtcliente.Size = new System.Drawing.Size(259, 20);
             this.txtcliente.TabIndex = 10;
             // 
             // txttotal
             // 
-            this.txttotal.Location = new System.Drawing.Point(151, 100);
+            this.txttotal.Location = new System.Drawing.Point(133, 101);
             this.txttotal.Name = "txttotal";
             this.txttotal.Size = new System.Drawing.Size(259, 20);
             this.txttotal.TabIndex = 9;
@@ -341,7 +342,7 @@
             this.label11.BackColor = System.Drawing.Color.White;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(423, 156);
+            this.label11.Location = new System.Drawing.Point(434, 158);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(47, 16);
             this.label11.TabIndex = 31;
@@ -353,7 +354,7 @@
             this.label12.BackColor = System.Drawing.Color.White;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(423, 126);
+            this.label12.Location = new System.Drawing.Point(434, 128);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(73, 16);
             this.label12.TabIndex = 28;
@@ -365,7 +366,7 @@
             this.label13.BackColor = System.Drawing.Color.White;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(423, 101);
+            this.label13.Location = new System.Drawing.Point(434, 103);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(92, 16);
             this.label13.TabIndex = 27;
@@ -377,7 +378,7 @@
             this.label14.BackColor = System.Drawing.Color.White;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(423, 74);
+            this.label14.Location = new System.Drawing.Point(434, 76);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(47, 16);
             this.label14.TabIndex = 26;
@@ -389,7 +390,7 @@
             this.label15.BackColor = System.Drawing.Color.White;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(423, 48);
+            this.label15.Location = new System.Drawing.Point(434, 50);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(102, 16);
             this.label15.TabIndex = 25;
@@ -404,14 +405,14 @@
             // 
             // dateTimePickerpedido
             // 
-            this.dateTimePickerpedido.Location = new System.Drawing.Point(151, 74);
+            this.dateTimePickerpedido.Location = new System.Drawing.Point(133, 75);
             this.dateTimePickerpedido.Name = "dateTimePickerpedido";
             this.dateTimePickerpedido.Size = new System.Drawing.Size(259, 20);
             this.dateTimePickerpedido.TabIndex = 34;
             // 
             // txtdocumento
             // 
-            this.txtdocumento.Location = new System.Drawing.Point(151, 152);
+            this.txtdocumento.Location = new System.Drawing.Point(133, 153);
             this.txtdocumento.Name = "txtdocumento";
             this.txtdocumento.Size = new System.Drawing.Size(259, 20);
             this.txtdocumento.TabIndex = 35;
@@ -447,12 +448,24 @@
             this.comboBoxcargo.Size = new System.Drawing.Size(259, 21);
             this.comboBoxcargo.TabIndex = 101;
             // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(398, 121);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(28, 31);
+            this.button5.TabIndex = 102;
+            this.button5.Text = "+";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Pedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1080, 628);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.comboBoxcargo);
             this.Controls.Add(this.comboBoxempleado);
             this.Controls.Add(this.comboBoxtipopago);
@@ -532,5 +545,6 @@
         private System.Windows.Forms.ComboBox comboBoxtipopago;
         private System.Windows.Forms.ComboBox comboBoxempleado;
         private System.Windows.Forms.ComboBox comboBoxcargo;
+        private System.Windows.Forms.Button button5;
     }
 }

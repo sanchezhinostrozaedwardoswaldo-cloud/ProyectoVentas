@@ -22,6 +22,14 @@ namespace SistemaVenta
             txtcodigo.Enabled = false;
         }
 
+        public void setClienteDatos(int id, string nombre, string dni, string telefono)
+        {
+            txtcliente.Text = nombre;
+            txtdocumento.Text = dni;
+            txttelefono.Text = telefono;
+            txtcodigo.Text = id.ToString(); 
+        }
+
         private void label8_Click(object sender, EventArgs e)
         {
 
@@ -138,6 +146,12 @@ namespace SistemaVenta
         private void BTNPDF_Click(object sender, EventArgs e)
         {
             conexionBD.ExportarAPdf(dataGridView1, "Reporte de Pedidos", "Pedidos");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            lista_clientes a = new lista_clientes();
+            a.Show();
         }
     }
 }
