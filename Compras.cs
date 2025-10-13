@@ -19,6 +19,7 @@ namespace SistemaVenta
             InitializeComponent();
             button5.Enabled = false;
             button6.Enabled = false;
+            txtcodigo.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
