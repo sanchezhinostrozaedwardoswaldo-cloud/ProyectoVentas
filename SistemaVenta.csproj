@@ -210,6 +210,12 @@
     <Compile Include="Registro_Usuarios.Designer.cs">
       <DependentUpon>Registro_Usuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reporte_Producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte_Producto.Designer.cs">
+      <DependentUpon>Reporte_Producto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sucursal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +283,9 @@
     <EmbeddedResource Include="Registro_Usuarios.resx">
       <DependentUpon>Registro_Usuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reporte_Producto.resx">
+      <DependentUpon>Reporte_Producto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sucursal.resx">
       <DependentUpon>Sucursal.cs</DependentUpon>
     </EmbeddedResource>
@@ -304,7 +313,9 @@
     <None Include="Resources\ciberseguridad %281%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\2gog101fqFT33ZdJw99gnUj276Q-mobile.jpg" />
+    <None Include="Resources\2gog101fqFT33ZdJw99gnUj276Q-mobile.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\png-clipart-light-white-x-illustration-thumbnail.png" />
@@ -459,15 +470,33 @@
     <Content Include="BD\procedimientos.sql" />
     <Content Include="BD\registro_de_distritos.sql" />
     <Content Include="BD\vistas.sql" />
-    <Content Include="Resources\3.jpg" />
-    <Content Include="Resources\consola.jpg" />
-    <Content Include="Resources\mouse.jpg" />
-    <Content Include="Resources\teclado.jpg" />
-    <None Include="Resources\camara.jpg" />
-    <None Include="Resources\monitor.jpg" />
-    <None Include="Resources\4.jpg" />
-    <None Include="Resources\5.jpg" />
-    <None Include="Resources\1.jpg" />
+    <Content Include="Resources\3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\consola.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\mouse.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\teclado.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\camara.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\monitor.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\WhatsApp Image 2025-10-07 at 7.19.04 PM.jpeg" />
     <None Include="Resources\Diseño sin título2.png" />
   </ItemGroup>
