@@ -32,25 +32,25 @@ namespace SistemaVenta
             // Bloque 1 (para pictureBox1)
             imagenes1 = new string[]
             {
-                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\1.jpg",
-                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\3.jpg",
-                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\5.jpg",
+                @"Resources\1.jpg",
+                @"Resources\3.jpg",
+                @"Resources\5.jpg",
             };
 
             // Bloque 2 (para pictureBox2)
             imagenes2 = new string[]
             {
-                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\monitor.jpg",
-                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\teclado.jpg",
-                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\mouse.jpg"
+                @"Resources\monitor.jpg",
+                @"Resources\teclado.jpg",
+                @"Resources\mouse.jpg"
             };
 
             // Bloque 3 (para pictureBox3)
             imagenes3 = new string[]
             {
-                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\4.jpg",
-                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\camara.jpg",
-                @"C:\Users\18-TC-404\Documents\proyectoventas\Resources\consola.jpg"
+                @"Resources\4.jpg",
+                @"Resources\camara.jpg",
+                @"Resources\consola.jpg"
             };
 
             // Mostrar las primeras imágenes
