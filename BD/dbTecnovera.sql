@@ -173,7 +173,6 @@ CREATE TABLE IF NOT EXISTS `db_tecnovera`.`PRODUCTO` (
   `IdCategoria` INT NOT NULL,
   `IdMarca` INT NOT NULL,
   `IdModelo` INT NOT NULL,
-  `IdUNIDAD_ MEDIDA` INT NOT NULL,
   `Descripcion` VARCHAR(45) NULL,
   `Precio` DOUBLE NOT NULL,
   `Stock` INT NOT NULL,
