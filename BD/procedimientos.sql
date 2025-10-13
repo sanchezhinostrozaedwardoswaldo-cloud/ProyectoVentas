@@ -1,3 +1,5 @@
+
+
 -- =============================================
 -- PROCEDIMIENTOS ALMACENADOS PARA TABLA CLIENTE
 -- =============================================
@@ -6,6 +8,9 @@
 -- 1. PROCEDIMIENTO PARA BUSCAR CLIENTES
 -- Retorna los datos de la vista_cliente con filtros opcionales
 -- =============================================
+
+DELIMITER $$
+
 DROP PROCEDURE IF EXISTS sp_buscar_cliente$$
 CREATE PROCEDURE sp_buscar_cliente(
     IN p_criterio VARCHAR(100)  -- Criterio de búsqueda (nombre, documento, teléfono, etc.)

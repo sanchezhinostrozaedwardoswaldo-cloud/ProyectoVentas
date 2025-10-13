@@ -459,6 +459,21 @@ namespace SistemaVenta
                 return false;
             }
 
+            // Validar correo electrónico (opcional, solo si no está vacío)
+            if (!string.IsNullOrWhiteSpace(txtcorreo.Text))
+            {
+                string correo = txtcorreo.Text.Trim();
+                string patronCorreo = @"^[^@\s]+@[^@\s]+\.[^@\s]+$"; // Expresión regular básica para correo
+
+                if (!System.Text.RegularExpressions.Regex.IsMatch(correo, patronCorreo))
+                {
+                    MessageBox.Show("Ingrese un correo electrónico válido.", "Validación",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtcorreo.Focus();
+                    return false;
+                }
+            }
+
             // Validar teléfono (Perú sin +51)
             if (string.IsNullOrWhiteSpace(txttelefono.Text))
             {
