@@ -681,6 +681,7 @@ namespace SistemaVenta
         private void button18_Click_1(object sender, EventArgs e)
         {
             AbrirFormHija(new Reporte_Producto());
+            SubmenuUsuarios.Visible = false;
         }
     }
 }
