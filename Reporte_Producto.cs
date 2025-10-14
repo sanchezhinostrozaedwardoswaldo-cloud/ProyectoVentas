@@ -14,10 +14,16 @@ namespace SistemaVenta
     {
         public Reporte_Producto()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void radioButton8_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Reporte_Producto_Load(object sender, EventArgs e)
         {
 
         }

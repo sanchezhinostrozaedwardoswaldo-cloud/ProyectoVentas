@@ -678,5 +678,9 @@ namespace SistemaVenta
             button100.Region = new Region(path);
         }
 
+        private void button18_Click_1(object sender, EventArgs e)
+        {
+            AbrirFormHija(new Reporte_Producto());
+        }
     }
 }

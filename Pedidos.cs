@@ -150,8 +150,11 @@ namespace SistemaVenta
 
         private void button5_Click(object sender, EventArgs e)
         {
-            lista_clientes a = new lista_clientes();
+            lista_clientes a = new lista_clientes(this); // ← se pasa la instancia actual
             a.Show();
+            this.WindowState = FormWindowState.Minimized;
+            //lista_clientes a = new lista_clientes();
+            //a.Show();
         }
     }
 }

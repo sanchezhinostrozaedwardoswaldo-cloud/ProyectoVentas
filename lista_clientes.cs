@@ -13,11 +13,14 @@ namespace SistemaVenta
 {
     public partial class lista_clientes : Form
     {
+        private Pedidos formularioPedido; // ← instancia pasada desde Pedidos
         private DataGridViewRow filaSeleccionada = null;
         conexion_bd conexionBD = new conexion_bd();
-        public lista_clientes()
+        public lista_clientes(Pedidos pedidoForm)
         {
             InitializeComponent();
+            formularioPedido = pedidoForm;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void lista_clientes_Load(object sender, EventArgs e)
@@ -68,6 +71,23 @@ namespace SistemaVenta
                 string dni = filaSeleccionada.Cells["N°"].Value.ToString();
                 string telefono = filaSeleccionada.Cells["Teléfono"].Value.ToString();
 
+                formularioPedido.setClienteDatos(id, nombre, dni, telefono);
+                formularioPedido.WindowState = FormWindowState.Normal; // vuelve a mostrar
+                formularioPedido.BringToFront(); // lo trae al frente
+
+                this.Close(); // cerrar la lista de clientes
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un cliente de la lista.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            /*if (filaSeleccionada != null)
+            {
+                int id = Convert.ToInt32(filaSeleccionada.Cells["ID Cliente"].Value);
+                string nombre = filaSeleccionada.Cells["Nombre"].Value.ToString();
+                string dni = filaSeleccionada.Cells["N°"].Value.ToString();
+                string telefono = filaSeleccionada.Cells["Teléfono"].Value.ToString();
+
 
                 Pedidos formularioPedido = new Pedidos();
                 formularioPedido.setClienteDatos(id, nombre, dni, telefono);
@@ -78,7 +98,7 @@ namespace SistemaVenta
             else
             {
                 MessageBox.Show("Por favor, seleccione un cliente de la lista.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            }*/
         }
     }
 }
